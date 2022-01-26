@@ -10,7 +10,7 @@
 </head>
 <body>
     <main class="container todo">
-        <div class="todo__container">
+        <div class="todo__container p-0">
           <form class="form">
             <div class="mb-3">
               <label for="exampleInputEmail1" class="form-label"><h3>Ismingizni kiriting</h3></label>
@@ -35,11 +35,11 @@
 
           <ul class="list"></ul>
 
-          <div class="d-flex">
-          <button class="btn btn-primary px-5 py-2 all_btn d-flex">All <span class="allresult ms-1">0</span></button>
-          <button class="btn btn-primary px-5 py-2 completed_btn mx-3">Complated <span class="completed-result ms-1">0</span></button>
-          <button class="btn btn-primary px-5 py-2 uncompleted_btn">Uncomplated <span class="uncomplated-result ms-1">0</span></button>
-          <button class="btn btn-primary ms-3 px-5 py-2 delete__btn">Delete<span class="delete__result ms-1">0</span></button>
+          <div class="d-flex result-btn">
+          <button class="btn btn-primary px-5 py-2 result-btn-include all_btn d-flex">All <span class="allresult ms-1">0</span></button>
+          <button class="btn btn-primary px-5 py-2 result-btn-include completed_btn">Complated <span class="completed-result ms-1">0</span></button>
+          <button class="btn btn-primary px-5 py-2 result-btn-include uncompleted_btn">Uncomplated <span class="uncomplated-result ms-1">0</span></button>
+          <button class="btn btn-primary px-5 result-btn-include py-2 delete__btn">Delete<span class="delete__result ms-1">0</span></button>
         </div>
 
         </div>
