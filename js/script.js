@@ -8,6 +8,8 @@ elForms.addEventListener('submit', function(evt){
 
     let formsInputValue = elFormsInput.value
 
+
+
     elFormDesc.textContent = `${formsInputValue} dasturimizga xush kelibsiz`
 })
 
@@ -33,32 +35,7 @@ let elUncomplatedResult = document.querySelector('.uncomplated-result')
 let elDeleteResult = document.querySelector('.delete__result')
 
 
-let todos = []
-let istoriya = []
 
-
-elList.addEventListener('click', function(evt){
-    if(evt.target.matches('.delete-btn')){
-        let btnTodoId = evt.target.dataset.todoId * 1
-        let foundIndex = todos.findIndex((todo) => todo.id === btnTodoId)
-        istoriya.push(todos[foundIndex])
-        todos.splice(foundIndex, 1)
-
-        // console.log(istoriya);
-        elResult.textContent = todos.length
-        elList.innerHTML = null
-        renserTodos(todos, elList)
-    }else if(evt.target.matches('.checkbox-btn')){
-        let chekcTodoId = evt.target.dataset.checkId * 1
-
-        let foundCheckTodo = todos.find(todo => todo.id === chekcTodoId)
-        foundCheckTodo.isComplated = !foundCheckTodo.isComplated
-
-
-        elList.innerHTML = null
-        renserTodos(todos, elList)
-    }
-})
 
 const renserTodos = function(arr, element){
     elComplatedResult.textContent = todos.filter(todo => todo.isComplated).length
@@ -99,6 +76,66 @@ const renserTodos = function(arr, element){
     })
 }
 
+
+
+
+
+
+
+
+const localTodos = JSON.parse(window.localStorage.getItem("localTodos"))
+
+let todos = localTodos || []
+let istoriya = []
+
+renserTodos(todos, elList)
+
+
+elList.addEventListener('click', function(evt){
+    if(evt.target.matches('.delete-btn')){
+        let btnTodoId = evt.target.dataset.todoId * 1
+        let foundIndex = todos.findIndex((todo) => todo.id === btnTodoId)
+        istoriya.push(todos[foundIndex])
+
+        window.localStorage.setItem("localTodos", JSON.stringify(todos))
+
+        todos.splice(foundIndex, 1)
+
+        window.localStorage.setItem("localTodos", JSON.stringify(todos))
+
+
+
+
+
+        // console.log(istoriya);
+        elResult.textContent = todos.length
+        elList.innerHTML = null
+        renserTodos(todos, elList)
+    }else if(evt.target.matches('.checkbox-btn')){
+        let chekcTodoId = evt.target.dataset.checkId * 1
+
+        let foundCheckTodo = todos.find(todo => todo.id === chekcTodoId)
+        foundCheckTodo.isComplated = !foundCheckTodo.isComplated
+
+        window.localStorage.setItem("localTodos", JSON.stringify(todos))
+
+
+
+
+
+
+
+
+
+
+
+
+        elList.innerHTML = null
+        renserTodos(todos, elList)
+    }
+})
+
+
 elForm.addEventListener('submit', function(evt) {
     evt.preventDefault();
 
@@ -110,9 +147,20 @@ elForm.addEventListener('submit', function(evt) {
         isComplated: false,
     }
 
+    elResult.textContent = todos.length
     todos.push(newTodo)
 
-    elResult.textContent = todos.length
+    window.localStorage.setItem("localTodos", JSON.stringify(todos))
+
+
+
+
+
+
+
+
+
+
 
     elList.innerHTML = null
     elInput.value = null
