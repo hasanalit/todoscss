@@ -66,25 +66,35 @@ const renserTodos = function(arr, element){
     elDeleteResult.textContent = todos.filter(todo => todo.isComplated && !todo.isComplated)
     arr.forEach(function(todo){
         let newItem = document.createElement('li')
+        let newItemSection = document.createElement('div')
         let newCheckBox = document.createElement('input')
+        let newItemDesc = document.createElement('p')
         let newDeleteBtn = document.createElement('button')
-        newItem.textContent = todo.title
+        // newItem.textContent = todo.title
+        newItemDesc.textContent = todo.title
         newCheckBox.type = 'checkbox'
         newDeleteBtn.textContent = 'Delete'
+
+        newItemDesc.classList.add('item-text')
+        newItemSection.classList.add('item-section')
+        newItem.classList.add('item')
         newDeleteBtn.classList.add('delete-btn')
         newCheckBox.classList.add('checkbox-btn')
 
         newDeleteBtn.dataset.todoId = todo.id
         newCheckBox.dataset.checkId = todo.id
 
+        newItemSection.style.display = 'flex'
+
         if(todo.isComplated){
             newCheckBox.checked = true
-            newItem.style.textDecoration = 'line-through'
-            // complet.push(todos[foundCheckTodo])
-            // console.log(complet);
+            newItemDesc.style.textDecoration = 'line-through'
         }
+
         element.appendChild(newItem)
-        newItem.appendChild(newCheckBox)
+        newItem.appendChild(newItemSection)
+        newItemSection.appendChild(newCheckBox)
+        newItemSection.appendChild(newItemDesc)
         newItem.appendChild(newDeleteBtn)
     })
 }

@@ -375,6 +375,39 @@ body {
   vertical-align: middle;
 }
 
+.form-todo__desc {
+  text-align: center;
+  width: 300px;
+  border: 1px solid #000;
+  border-radius: 5px;
+}
+
+.item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.item-section {
+  margin-left: -100px;
+  padding: 10px 10px;
+  width: 500px;
+  background-color: #fff;
+  border-radius: 4px;
+  border: 1px solid #000;
+}
+
+.delete-btn {
+  border: none;
+  background-color: transparent;
+}
+
+.item-text {
+  margin: 0;
+  margin-top: -7px;
+  margin-left: 10px;
+}
+
 .visually-hidden {
   position: absolute;
   width: 1px;
@@ -404,10 +437,6 @@ body {
 body {
   width: 100%;
   font-family: 'Oswald', sans-serif;
-  background: linear-gradient(135deg, #ee7752, #74656a, #23a6d5, #23d5ab);
-  background-size: 400% 400%;
-  -webkit-animation: gradient 10s ease infinite;
-          animation: gradient 10s ease infinite;
   height: 100vh;
 }
 
@@ -424,8 +453,6 @@ body {
           flex-direction: column;
   margin: 20px;
   padding: 20px 100px;
-  -webkit-box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
-          box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
 }
 
 .form {
@@ -486,49 +513,5 @@ body {
 
 .form__checked:checked .todo__desc {
   text-decoration: line-through;
-}
-
-@-webkit-keyframes gradient {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-}
-
-@keyframes gradient {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-}
-
-@media only screen and (max-width: 500px) {
-  .todo__container {
-    margin: 20px;
-    padding: 20px 50px;
-  }
-  .item {
-    padding: 0px 90px;
-  }
-}
-
-@media only screen and (max-width: 400px) {
-  .todo__container {
-    margin: 20px;
-    padding: 20px;
-  }
-  .item {
-    padding: 0px 80px;
-  }
 }
 /*# sourceMappingURL=main.css.map */
